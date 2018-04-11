@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="database1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Model.C__RefactorLog" />
+    <EntitySet Name="Compra" EntityType="Model.Compra" />
+    <EntitySet Name="Fornecedor" EntityType="Model.Fornecedor" />
+    <EntitySet Name="ItemCompra" EntityType="Model.ItemCompra" />
+    <EntitySet Name="ItemVenda" EntityType="Model.ItemVenda" />
+    <EntitySet Name="Pessoa" EntityType="Model.Pessoa" />
+    <EntitySet Name="Produto" EntityType="Model.Produto" />
+    <EntitySet Name="Venda" EntityType="Model.Venda" />
+    <AssociationSet Name="FK__Venda__idCliente__286302EC" Association="Model.FK__Venda__idCliente__286302EC">
+      <End Role="Cliente" EntitySet="Pessoa" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Compra__forneced__239E4DCF" Association="Model.FK__Compra__forneced__239E4DCF">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemCompr__compr__25869641" Association="Model.FK__ItemCompr__compr__25869641">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemCompr__produ__24927208" Association="Model.FK__ItemCompr__produ__24927208">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemVenda__idPro__276EDEB3" Association="Model.FK__ItemVenda__idPro__276EDEB3">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemVenda__idVen__267ABA7A" Association="Model.FK__ItemVenda__idVen__267ABA7A">
+      <End Role="Venda" EntitySet="Venda" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venda__idVendedo__29572725" Association="Model.FK__Venda__idVendedo__29572725">
+      <End Role="Vendedor" EntitySet="Pessoa" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente" BaseType="Model.Pessoa">
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="telefone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="endereco" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Venda" Relationship="Model.FK__Venda__idCliente__286302EC" FromRole="Cliente" ToRole="Venda" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="idCompra" />
+    </Key>
+    <Property Name="idCompra" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fornecedorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fornecedor" Relationship="Model.FK__Compra__forneced__239E4DCF" FromRole="Compra" ToRole="Fornecedor" />
+    <NavigationProperty Name="ItemCompra" Relationship="Model.FK__ItemCompr__compr__25869641" FromRole="Compra" ToRole="ItemCompra" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="idFornecedor" />
+    </Key>
+    <Property Name="idFornecedor" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="cnpj" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Compra" Relationship="Model.FK__Compra__forneced__239E4DCF" FromRole="Fornecedor" ToRole="Compra" />
+  </EntityType>
+  <EntityType Name="ItemCompra">
+    <Key>
+      <PropertyRef Name="idItemCompra" />
+    </Key>
+    <Property Name="idItemCompra" Type="Int32" Nullable="false" />
+    <Property Name="precoUnitario" Type="Double" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="produtoId" Type="Int32" Nullable="false" />
+    <Property Name="compraId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Compra" Relationship="Model.FK__ItemCompr__compr__25869641" FromRole="ItemCompra" ToRole="Compra" />
+    <NavigationProperty Name="Produto" Relationship="Model.FK__ItemCompr__produ__24927208" FromRole="ItemCompra" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="ItemVenda">
+    <Key>
+      <PropertyRef Name="idItemVenda" />
+    </Key>
+    <Property Name="idItemVenda" Type="Int32" Nullable="false" />
+    <Property Name="precoUnitario" Type="Double" Nullable="false" />
+    <Property Name="quantidade" Type="Int32" Nullable="false" />
+    <Property Name="idVenda" Type="Int32" Nullable="false" />
+    <Property Name="idProduto" Type="Int32" />
+    <NavigationProperty Name="Produto" Relationship="Model.FK__ItemVenda__idPro__276EDEB3" FromRole="ItemVenda" ToRole="Produto" />
+    <NavigationProperty Name="Venda" Relationship="Model.FK__ItemVenda__idVen__267ABA7A" FromRole="ItemVenda" ToRole="Venda" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="idPessoa" />
+    </Key>
+    <Property Name="idPessoa" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="cpf" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="idProduto" />
+    </Key>
+    <Property Name="idProduto" Type="Int32" Nullable="false" />
+    <Property Name="categoria" Type="Int32" Nullable="false" />
+    <Property Name="estoque" Type="Int32" Nullable="false" />
+    <Property Name="precoUnitario" Type="Double" Nullable="false" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ItemCompra" Relationship="Model.FK__ItemCompr__produ__24927208" FromRole="Produto" ToRole="ItemCompra" />
+    <NavigationProperty Name="ItemVenda" Relationship="Model.FK__ItemVenda__idPro__276EDEB3" FromRole="Produto" ToRole="ItemVenda" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="idVenda" />
+    </Key>
+    <Property Name="idVenda" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="DateTime" Precision="0" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="idVendedor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Model.FK__Venda__idCliente__286302EC" FromRole="Venda" ToRole="Cliente" />
+    <NavigationProperty Name="ItemVenda" Relationship="Model.FK__ItemVenda__idVen__267ABA7A" FromRole="Venda" ToRole="ItemVenda" />
+    <NavigationProperty Name="Vendedor" Relationship="Model.FK__Venda__idVendedo__29572725" FromRole="Venda" ToRole="Vendedor" />
+  </EntityType>
+  <EntityType Name="Vendedor" BaseType="Model.Pessoa">
+    <Property Name="IdVendedor" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="senha" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Venda" Relationship="Model.FK__Venda__idVendedo__29572725" FromRole="Vendedor" ToRole="Venda" />
+  </EntityType>
+  <Association Name="FK__Venda__idCliente__286302EC">
+    <End Type="Model.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="Model.Venda" Role="Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Compra__forneced__239E4DCF">
+    <End Type="Model.Fornecedor" Role="Fornecedor" Multiplicity="1" />
+    <End Type="Model.Compra" Role="Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="idFornecedor" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="fornecedorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemCompr__compr__25869641">
+    <End Type="Model.Compra" Role="Compra" Multiplicity="1" />
+    <End Type="Model.ItemCompra" Role="ItemCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="idCompra" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="compraId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemCompr__produ__24927208">
+    <End Type="Model.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="Model.ItemCompra" Role="ItemCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="produtoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemVenda__idPro__276EDEB3">
+    <End Type="Model.Produto" Role="Produto" Multiplicity="0..1" />
+    <End Type="Model.ItemVenda" Role="ItemVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemVenda__idVen__267ABA7A">
+    <End Type="Model.Venda" Role="Venda" Multiplicity="1" />
+    <End Type="Model.ItemVenda" Role="ItemVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="idVenda" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="idVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venda__idVendedo__29572725">
+    <End Type="Model.Vendedor" Role="Vendedor" Multiplicity="1" />
+    <End Type="Model.Venda" Role="Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedor">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="idVendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f41d307e7ac45f1a48ac79f72c3071d" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="Model.Compra" Width="1.5" PointX="5.625" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Fornecedor" Width="1.5" PointX="3.375" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ItemCompra" Width="1.5" PointX="7.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ItemVenda" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Pessoa" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cliente" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vendedor" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Produto" Width="1.5" PointX="5.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Venda" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <InheritanceConnector EntityType="Model.Cliente" />
+        <InheritanceConnector EntityType="Model.Vendedor" />
+        <AssociationConnector Association="Model.ClienteVenda" />
+        <AssociationConnector Association="Model.VendedorVenda" />
+        <AssociationConnector Association="Model.VendaItemVenda" />
+        <AssociationConnector Association="Model.ProdutoItemVenda" />
+        <AssociationConnector Association="Model.ItemCompra_Produto" />
+        <AssociationConnector Association="Model.ItemCompra_Compra" />
+        <AssociationConnector Association="Model.CompraFornecedor" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

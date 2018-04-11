@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Compra" EntityType="Model.Store.Compra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fornecedor" EntityType="Model.Store.Fornecedor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemCompra" EntityType="Model.Store.ItemCompra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemVenda" EntityType="Model.Store.ItemVenda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pessoa" EntityType="Model.Store.Pessoa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pessoa_Cliente" EntityType="Model.Store.Pessoa_Cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pessoa_Vendedor" EntityType="Model.Store.Pessoa_Vendedor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produto" EntityType="Model.Store.Produto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Venda" EntityType="Model.Store.Venda" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClienteVenda" Association="Model.Store.ClienteVenda">
+      <End Role="Cliente" EntitySet="Pessoa_Cliente" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="VendedorVenda" Association="Model.Store.VendedorVenda">
+      <End Role="Vendedor" EntitySet="Pessoa_Vendedor" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="VendaItemVenda" Association="Model.Store.VendaItemVenda">
+      <End Role="Venda" EntitySet="Venda" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="ProdutoItemVenda" Association="Model.Store.ProdutoItemVenda">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="ItemCompra_Produto" Association="Model.Store.ItemCompra_Produto">
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="ItemCompra_Compra" Association="Model.Store.ItemCompra_Compra">
+      <End Role="ItemCompra" EntitySet="ItemCompra" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="CompraFornecedor" Association="Model.Store.CompraFornecedor">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_inherits_Pessoa" Association="Model.Store.FK_Cliente_inherits_Pessoa">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Cliente" EntitySet="Pessoa_Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendedor_inherits_Pessoa" Association="Model.Store.FK_Vendedor_inherits_Pessoa">
+      <End Role="Pessoa" EntitySet="Pessoa" />
+      <End Role="Vendedor" EntitySet="Pessoa_Vendedor" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="idCompra" />
+    </Key>
+    <Property Name="idCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="datetime" Nullable="false" />
+    <Property Name="fornecedorId" Type="int" Nullable="false" />
+    <Property Name="Fornecedor_idFornecedor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="idFornecedor" />
+    </Key>
+    <Property Name="idFornecedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nchar" Nullable="false" MaxLength="30" />
+    <Property Name="cnpj" Type="nchar" Nullable="false" MaxLength="14" />
+  </EntityType>
+  <EntityType Name="ItemCompra">
+    <Key>
+      <PropertyRef Name="idItemCompra" />
+    </Key>
+    <Property Name="idItemCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="precoUnitario" Type="float" Nullable="false" />
+    <Property Name="quantidade" Type="int" Nullable="false" />
+    <Property Name="Produto_idProduto" Type="int" Nullable="false" />
+    <Property Name="Compra_idCompra" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemVenda">
+    <Key>
+      <PropertyRef Name="idItemVenda" />
+    </Key>
+    <Property Name="idItemVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="precoUnitario" Type="float" Nullable="false" />
+    <Property Name="quantidade" Type="int" Nullable="false" />
+    <Property Name="Venda_idVenda" Type="int" Nullable="false" />
+    <Property Name="Produto_idProduto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="idPessoa" />
+    </Key>
+    <Property Name="idPessoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nchar" Nullable="false" MaxLength="30" />
+    <Property Name="cpf" Type="nchar" Nullable="false" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="Pessoa_Cliente">
+    <Key>
+      <PropertyRef Name="idPessoa" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="telefone" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="endereco" Type="nchar" Nullable="true" MaxLength="30" />
+    <Property Name="idPessoa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pessoa_Vendedor">
+    <Key>
+      <PropertyRef Name="idPessoa" />
+    </Key>
+    <Property Name="idVendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="senha" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="idPessoa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="idProduto" />
+    </Key>
+    <Property Name="idProduto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoria" Type="int" Nullable="false" />
+    <Property Name="estoque" Type="int" Nullable="false" />
+    <Property Name="precoUnitario" Type="float" Nullable="false" />
+    <Property Name="nome" Type="nchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="idVenda" />
+    </Key>
+    <Property Name="idVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="datetime" Nullable="true" />
+    <Property Name="Cliente_idPessoa" Type="int" Nullable="false" />
+    <Property Name="Vendedor_idPessoa" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClienteVenda">
+    <End Role="Cliente" Type="Model.Store.Pessoa_Cliente" Multiplicity="1" />
+    <End Role="Venda" Type="Model.Store.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="Cliente_idPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendedorVenda">
+    <End Role="Vendedor" Type="Model.Store.Pessoa_Vendedor" Multiplicity="1" />
+    <End Role="Venda" Type="Model.Store.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedor">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="Vendedor_idPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendaItemVenda">
+    <End Role="Venda" Type="Model.Store.Venda" Multiplicity="1" />
+    <End Role="ItemVenda" Type="Model.Store.ItemVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="idVenda" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="Venda_idVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProdutoItemVenda">
+    <End Role="Produto" Type="Model.Store.Produto" Multiplicity="1" />
+    <End Role="ItemVenda" Type="Model.Store.ItemVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="Produto_idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemCompra_Produto">
+    <End Role="ItemCompra" Type="Model.Store.ItemCompra" Multiplicity="*" />
+    <End Role="Produto" Type="Model.Store.Produto" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="idProduto" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="Produto_idProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemCompra_Compra">
+    <End Role="ItemCompra" Type="Model.Store.ItemCompra" Multiplicity="*" />
+    <End Role="Compra" Type="Model.Store.Compra" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="idCompra" />
+      </Principal>
+      <Dependent Role="ItemCompra">
+        <PropertyRef Name="Compra_idCompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompraFornecedor">
+    <End Role="Compra" Type="Model.Store.Compra" Multiplicity="*" />
+    <End Role="Fornecedor" Type="Model.Store.Fornecedor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="idFornecedor" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="Fornecedor_idFornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_inherits_Pessoa">
+    <End Role="Pessoa" Type="Model.Store.Pessoa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cliente" Type="Model.Store.Pessoa_Cliente" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendedor_inherits_Pessoa">
+    <End Role="Pessoa" Type="Model.Store.Pessoa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Vendedor" Type="Model.Store.Pessoa_Vendedor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Pessoa">
+        <PropertyRef Name="idPessoa" />
+      </Principal>
+      <Dependent Role="Vendedor">
+        <PropertyRef Name="idPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

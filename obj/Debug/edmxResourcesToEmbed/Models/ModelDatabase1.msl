@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="database1Entities1">
+    <EntitySetMapping Name="Compra">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Compra)">
+        <MappingFragment StoreEntitySet="Compra">
+          <ScalarProperty Name="idCompra" ColumnName="idCompra" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="fornecedorId" ColumnName="fornecedorId" />
+          <ScalarProperty Name="Fornecedor_idFornecedor" ColumnName="Fornecedor_idFornecedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fornecedor">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Fornecedor)">
+        <MappingFragment StoreEntitySet="Fornecedor">
+          <ScalarProperty Name="idFornecedor" ColumnName="idFornecedor" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemCompra">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ItemCompra)">
+        <MappingFragment StoreEntitySet="ItemCompra">
+          <ScalarProperty Name="idItemCompra" ColumnName="idItemCompra" />
+          <ScalarProperty Name="precoUnitario" ColumnName="precoUnitario" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="Produto_idProduto" ColumnName="Produto_idProduto" />
+          <ScalarProperty Name="Compra_idCompra" ColumnName="Compra_idCompra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemVenda">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ItemVenda)">
+        <MappingFragment StoreEntitySet="ItemVenda">
+          <ScalarProperty Name="idItemVenda" ColumnName="idItemVenda" />
+          <ScalarProperty Name="precoUnitario" ColumnName="precoUnitario" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="Venda_idVenda" ColumnName="Venda_idVenda" />
+          <ScalarProperty Name="Produto_idProduto" ColumnName="Produto_idProduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pessoa">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Pessoa)">
+        <MappingFragment StoreEntitySet="Pessoa">
+          <ScalarProperty Name="idPessoa" ColumnName="idPessoa" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Cliente)">
+        <MappingFragment StoreEntitySet="Pessoa_Cliente">
+          <ScalarProperty Name="idPessoa" ColumnName="idPessoa" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Vendedor)">
+        <MappingFragment StoreEntitySet="Pessoa_Vendedor">
+          <ScalarProperty Name="idPessoa" ColumnName="idPessoa" />
+          <ScalarProperty Name="idVendedor" ColumnName="idVendedor" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Produto)">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="estoque" ColumnName="estoque" />
+          <ScalarProperty Name="precoUnitario" ColumnName="precoUnitario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venda">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Venda)">
+        <MappingFragment StoreEntitySet="Venda">
+          <ScalarProperty Name="idVenda" ColumnName="idVenda" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="Cliente_idPessoa" ColumnName="Cliente_idPessoa" />
+          <ScalarProperty Name="Vendedor_idPessoa" ColumnName="Vendedor_idPessoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

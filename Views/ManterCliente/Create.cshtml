@@ -1,0 +1,29 @@
+﻿@using Trabalho1Bim.Models
+@model  Cliente
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.nome)
+        @Html.TextBoxFor(model => model.nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.cpf)
+        @Html.TextBoxFor(model => model.cpf, new { @class= "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.telefone)
+        @Html.TextBoxFor(model => model.telefone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.endereco)
+        @Html.TextBoxFor(model => model.endereco, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Enviar</button>
+}
+
