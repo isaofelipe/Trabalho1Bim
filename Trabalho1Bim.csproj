@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ManterClienteViewModel.cs" />
+    <Compile Include="ViewModels\RealizarCompraViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
