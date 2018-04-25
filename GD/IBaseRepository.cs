@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho1Bim.GD
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IBaseGD<T> where T : class
     {
         T RecuperarPorId(int id);
         IQueryable<T> RecuperarTodos();

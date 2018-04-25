@@ -13,23 +13,11 @@ namespace Trabalho1Bim.Controllers
     public class ManterClienteController : Controller
     {
         ManterClienteViewModel manterClienteViewModel = new ManterClienteViewModel();
-        ClienteRepository _ClienteRepository;
-
-        private ClienteRepository clienteRepository{
-            get
-            {
-                if(_ClienteRepository == null)
-                {
-                    _ClienteRepository = new ClienteRepository(new database1Entities1());
-                }
-                return _ClienteRepository;
-            }
-        }
 
         // GET: ManterCliente
         public ActionResult Index()
         {
-            manterClienteViewModel.ListaCliente = clienteRepository.RecuperarTodos().ToList();
+            manterClienteViewModel.ListaCliente = ClienteDP.Repository.RecuperarTodos().ToList();
             return View(manterClienteViewModel);
         }
 
@@ -48,7 +36,7 @@ namespace Trabalho1Bim.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ClienteService.ClienteRepository.Adicionar(cliente);
+                    ClienteDP.Repository.Adicionar(cliente);
                     return RedirectToAction("Index");
                 }
             }
@@ -62,7 +50,7 @@ namespace Trabalho1Bim.Controllers
         // GET: ManterCliente/Edit/5
         public ActionResult Edit(int id)
         {
-            Cliente cliente = clienteRepository.RecuperarPorId(id);
+            Cliente cliente = ClienteDP.Repository.RecuperarPorId(id);
             return View(cliente);
         }
 
@@ -74,7 +62,7 @@ namespace Trabalho1Bim.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ClienteService.ClienteRepository.Editar(cliente);
+                    ClienteDP.Repository.Editar(cliente);
                     return RedirectToAction("Index");
                 }
             }
@@ -89,8 +77,8 @@ namespace Trabalho1Bim.Controllers
         {
             try
             {
-                Cliente cliente = clienteRepository.RecuperarPorId(id);
-                clienteRepository.Remover(cliente);
+                Cliente cliente = ClienteDP.Repository.RecuperarPorId(id);
+                ClienteDP.Repository.Remover(cliente);
                 
             }
             catch (Exception e)

@@ -10,25 +10,6 @@
     <title></title>
 </head>
 <body>
-    <div>
-        @foreach (var produto in Model.ListaProdutos)
-        {
-            <span>@produto.idProduto - @produto.nome</span>
-        }
-    </div>
-    <div>
-        @foreach (var fornecedor in Model.ListaFornecedores)
-        {
-            <span>@fornecedor.idFornecedor - @fornecedor.nome</span>
-        }
-    </div>
-    
-
-    @Html.LabelFor(model => model.ProdutoId)
-    @Html.TextBoxFor(model => model.ProdutoId)
-    @Html.LabelFor(model => model.FornecedorId)
-    @Html.TextBoxFor(model => model.FornecedorId)
-    @Html.TextBoxFor(model => model.Quantidade)
-
+    @Html.DropDownListFor(m => m.FornecedorId, Model.ListaFornecedores)
 </body>
 </html>

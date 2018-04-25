@@ -6,9 +6,9 @@ using Trabalho1Bim.Models;
 
 namespace Trabalho1Bim.GD
 {
-    public class ClienteRepository : BaseRepository<Cliente>, IDisposable
+    public class CompraGD : BaseGD<Compra>, IDisposable
     {
-        public ClienteRepository(database1Entities1 context) : base(context)
+        public CompraGD(database1Entities1 context) : base(context)
         {
         }
     }

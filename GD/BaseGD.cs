@@ -7,11 +7,11 @@ using Trabalho1Bim.Models;
 
 namespace Trabalho1Bim.GD
 {
-    public class BaseRepository<T> : IDisposable, IBaseRepository<T> where T : class
+    public class BaseGD<T> : IDisposable, IBaseGD<T> where T : class
     {
         public database1Entities1 _context;
 
-        public BaseRepository(database1Entities1 context)
+        public BaseGD(database1Entities1 context)
         {
             _context = context;
         }
