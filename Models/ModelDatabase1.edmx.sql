@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/10/2018 19:18:40
+-- Date Created: 04/28/2018 20:09:37
 -- Generated from EDMX file: D:\Repositorios\Trabalho1Bim\Trabalho1Bim\Models\ModelDatabase1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [database1];
+USE [trabalho1-eng-soft];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -22,6 +22,21 @@ IF OBJECT_ID(N'[dbo].[FK_ClienteVenda]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_VendedorVenda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Venda] DROP CONSTRAINT [FK_VendedorVenda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VendaItemVenda]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemVenda] DROP CONSTRAINT [FK_VendaItemVenda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProdutoItemVenda]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemVenda] DROP CONSTRAINT [FK_ProdutoItemVenda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ItemCompra_Produto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemCompra] DROP CONSTRAINT [FK_ItemCompra_Produto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ItemCompra_Compra]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemCompra] DROP CONSTRAINT [FK_ItemCompra_Compra];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CompraFornecedor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Compra] DROP CONSTRAINT [FK_CompraFornecedor];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Cliente_inherits_Pessoa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pessoa_Cliente] DROP CONSTRAINT [FK_Cliente_inherits_Pessoa];

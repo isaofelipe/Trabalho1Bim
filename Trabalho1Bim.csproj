@@ -34,6 +34,13 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="NewConnection1-Implantação" Order="1">
+          <Destination Path="Data Source=trabalho1.database.windows.net%3bInitial Catalog=trabalho1-eng-soft%3bUser ID=engsoft%3bPassword=Trabalho1%3bConnect Timeout=60%3bEncrypt=True%3bTrustServerCertificate=False%3bApplicationIntent=ReadWrite%3bMultiSubnetFailover=False" />
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -274,7 +281,6 @@
     <Content Include="Models\ModelDatabase1.edmx.diagram">
       <DependentUpon>ModelDatabase1.edmx</DependentUpon>
     </Content>
-    <Content Include="Connected Services\engsoft2AzureStorage\ConnectedService.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
