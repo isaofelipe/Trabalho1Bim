@@ -11,7 +11,7 @@ namespace Trabalho1Bim.GT
     public class RealizarVendaController : Controller
     {
         RealizarVendaViewModel realizarVendaViewModel = new RealizarVendaViewModel();
-        FacadeDP facadeDP = new FacadeDP();
+        VendaFacadeDP facadeDP = new VendaFacadeDP();
         ClienteDP clienteDP = new ClienteDP();
         ProdutoDP produtoDP = new ProdutoDP();
         VendedorDP vendedorDP = new VendedorDP();

@@ -13,9 +13,9 @@ namespace Trabalho1Bim.GT
         RealizarCompraViewModel realizarCompraViewModel = new RealizarCompraViewModel();
         ProdutoDP produtoDP = new ProdutoDP();
         FornecedorDP fornecedorDP = new FornecedorDP();
-        FacadeDP facadeDP = new FacadeDP();
+        CompraFacadeDP facadeDP = new CompraFacadeDP();
         // GET: RealizarCompra
-        public ActionResult Index()
+        public ActionResult Index()     
         {
             realizarCompraViewModel.ListaProdutos = realizarCompraViewModel.CriarListaProdutos(produtoDP.Repository.RecuperarTodos().ToList());
             realizarCompraViewModel.ListaFornecedores = realizarCompraViewModel.CriarListaFornecedores(fornecedorDP.Repository.RecuperarTodos().ToList());
