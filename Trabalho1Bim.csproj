@@ -184,6 +184,7 @@
     <Compile Include="Controllers\EstornarVendaController.cs" />
     <Compile Include="Controllers\ManterClienteController.cs" />
     <Compile Include="Controllers\RealizarVendaController.cs" />
+    <Compile Include="DP\CompraFacadeDP.cs" />
     <Compile Include="DP\VendedorDP.cs" />
     <Compile Include="DP\VendaDP.cs" />
     <Compile Include="DP\ProdutoDP.cs" />
@@ -193,7 +194,7 @@
     <Compile Include="DP\FornecedorDP.cs" />
     <Compile Include="DP\CompraDP.cs" />
     <Compile Include="DP\ClienteDP.cs" />
-    <Compile Include="DP\FacadeDP.cs" />
+    <Compile Include="DP\VendaFacadeDP.cs" />
     <Compile Include="GD\BaseGD.cs" />
     <Compile Include="GD\VendedorGD.cs" />
     <Compile Include="GD\VendaGD.cs" />
