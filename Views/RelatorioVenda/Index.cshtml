@@ -1,0 +1,34 @@
+﻿@using Trabalho1Bim.ViewModels
+@model RelatorioVendaViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Relatório Venda</h2>
+@using (Html.BeginForm("Index", "RelatorioVenda", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.VendedorId)
+        @Html.DropDownListFor(m => m.VendedorId, Model.ListaVendedores, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Filtrar</button>
+}
+<table id="tableRelatorioVenda" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venda in Model.ListaVenda)
+        {
+            <tr>
+                <td>@venda.Cliente.nome</td>
+                <td>@venda.Vendedor.nome</td>
+                <td>@venda.data</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -9,9 +9,9 @@ namespace Trabalho1Bim.DP
 {
     public class VendaDP
     {
-        private static VendaGD _Repository;
+        private VendaGD _Repository;
         
-        public static VendaGD Repository
+        public VendaGD Repository
         {
             get
             {
@@ -23,6 +23,20 @@ namespace Trabalho1Bim.DP
             }
         }
 
-
+        public void EstornarVenda(int vendaId)
+        {
+            Venda venda = Repository.RecuperarPorId(vendaId);
+            if (DateTime.Now.Subtract(venda.data.Value).TotalDays > 7)
+            {
+                throw new Exception("tempo excedido para estorno da venda");
+            }
+            ItemVendaGD itemVendaGD = new ItemVendaGD(Repository._context);
+            foreach(var itemVenda in venda.ItemVenda)
+            {
+                itemVendaGD.Remover(itemVenda);
+            }
+            venda = Repository.RecuperarPorId(vendaId);
+            Repository.Remover(venda);
+        }
     }
 }

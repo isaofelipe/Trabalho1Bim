@@ -9,9 +9,9 @@ namespace Trabalho1Bim.DP
 {
     public class FornecedorDP
     {
-        private static FornecedorGD _Repository;
+        private FornecedorGD _Repository;
         
-        public static FornecedorGD Repository
+        public FornecedorGD Repository
         {
             get
             {

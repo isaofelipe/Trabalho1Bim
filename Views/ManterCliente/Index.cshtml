@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Manter Cliente</h2>
 @Html.ActionLink("Adicionar Cliente", "Create", null, new { @class="btn btn-success"})
 <table id="tableCliente" class="table table-striped">
     <thead>
@@ -33,3 +33,4 @@
     </tbody>
     
 </table>
+@Html.ValidationSummary()

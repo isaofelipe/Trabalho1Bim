@@ -9,9 +9,9 @@ namespace Trabalho1Bim.DP
 {
     public class ItemVendaDP
     {
-        private static ItemVendaGD _Repository;
+        private ItemVendaGD _Repository;
         
-        public static ItemVendaGD Repository
+        public ItemVendaGD Repository
         {
             get
             {

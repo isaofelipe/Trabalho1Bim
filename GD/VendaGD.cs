@@ -11,5 +11,10 @@ namespace Trabalho1Bim.GD
         public VendaGD(database1Entities1 context) : base(context)
         {
         }
+
+        internal List<Venda> RecuperarPorVendedor(int vendedorId)
+        {
+            return RecuperarTodos().Where(x => x.Vendedor.idPessoa == vendedorId).ToList();
+        }
     }
 }

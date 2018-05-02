@@ -9,9 +9,9 @@ namespace Trabalho1Bim.DP
 {
     public class ClienteDP
     {
-        private static ClienteGD _Repository;
+        private ClienteGD _Repository;
         
-        public static ClienteGD Repository
+        public ClienteGD Repository
         {
             get
             {
@@ -22,7 +22,5 @@ namespace Trabalho1Bim.DP
                 return _Repository;
             }
         }
-
-
     }
 }

@@ -1,0 +1,35 @@
+﻿@using Trabalho1Bim.ViewModels
+@model ManterProdutoViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Manter Produto</h2>
+@Html.ActionLink("Adicionar Produto", "Create", null, new { @class="btn btn-success"})
+<table id="tableProduto" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Estoque</th>
+            <th>Preço</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Produto in Model.ListaProduto)
+        {
+            <tr>
+                <td>@Produto.nome</td>
+                <td>@Produto.categoria</td>
+                <td>@Produto.estoque</td>
+                <td>@Produto.precoUnitario</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = Produto.idProduto}, new { @class="btn btn-primary"})
+                    @Html.ActionLink("Excluir", "Delete", new { id = Produto.idProduto }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

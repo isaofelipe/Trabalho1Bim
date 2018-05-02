@@ -1,8 +1,6 @@
 ﻿@using Trabalho1Bim.ViewModels
+@using Trabalho1Bim.Controllers
 @model RealizarCompraViewModel
-@{
-    Layout = null;
-}
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +8,23 @@
     <title></title>
 </head>
 <body>
-    @Html.DropDownListFor(m => m.FornecedorId, Model.ListaFornecedores)
+    <h2>Realizar Compra</h2>
+    @using (Html.BeginForm("Index", "RealizarCompra", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.FornecedorId)
+            @Html.DropDownListFor(m => m.FornecedorId, Model.ListaFornecedores, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProdutoId)
+            @Html.DropDownListFor(m => m.ProdutoId, Model.ListaProdutos, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantidade)
+            @Html.TextBoxFor(m => m.Quantidade, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-success">Realizar Compra</button>
+    }
+    @Html.ValidationSummary()
 </body>
 </html>

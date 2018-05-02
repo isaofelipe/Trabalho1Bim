@@ -7,9 +7,10 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/3/paper/bootstrap.min.css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +22,36 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Manter Cliente", "Index", "ManterCliente")</li>
+                    <li  class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Cadastros Gerais
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Manter Cliente", "Index", "ManterCliente")</li>
+                            <li>@Html.ActionLink("Manter Produto", "Index", "ManterProduto")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Vendas
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Realizar Venda", "Index", "RealizarVenda")</li>
+                            <li>@Html.ActionLink("Estornar Venda", "Index", "EstornarVenda")</li>
+                            <li>@Html.ActionLink("Relatório Venda", "Index", "RelatorioVenda")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Compras
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Realizar Compra", "Index", "RealizarCompra")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

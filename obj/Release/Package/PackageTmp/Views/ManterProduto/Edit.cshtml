@@ -1,0 +1,31 @@
+﻿@using Trabalho1Bim.Models
+@model  Produto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Produto</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.nome)
+        @Html.TextBoxFor(model => model.nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.categoria)
+        @Html.TextBoxFor(model => model.categoria, new { @class= "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.estoque)
+        @Html.TextBoxFor(model => model.estoque, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.precoUnitario)
+        @Html.TextBoxFor(model => model.precoUnitario, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(model => model.idProduto)
+    <button type="submit" class="btn btn-success">Enviar</button>
+    @Html.ValidationSummary()
+}
+

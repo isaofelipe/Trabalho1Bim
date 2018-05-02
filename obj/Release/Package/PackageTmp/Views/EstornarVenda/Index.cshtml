@@ -1,0 +1,30 @@
+﻿@using Trabalho1Bim.ViewModels
+@model EstornarVendaViewModel
+@{
+    ViewBag.Title = "Estornar Venda";
+}
+
+<h2>Estornar Venda</h2>
+@Html.ValidationSummary()
+<table id="tableEstornarVenda" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venda in Model.ListaVenda)
+        {
+            <tr>
+                <td>@venda.Cliente.nome</td>
+                <td>@venda.Vendedor.nome</td>
+                <td>@venda.data</td>
+                <td>
+                    @Html.ActionLink("Estornar", "Estornar", new { vendaId = venda.idVenda}, new { @class="btn btn-primary"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

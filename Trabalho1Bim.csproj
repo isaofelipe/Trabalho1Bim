@@ -178,8 +178,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ManterProdutoController.cs" />
+    <Compile Include="Controllers\RelatorioVendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EstornarVendaController.cs" />
     <Compile Include="Controllers\ManterClienteController.cs" />
+    <Compile Include="Controllers\RealizarVendaController.cs" />
     <Compile Include="DP\VendedorDP.cs" />
     <Compile Include="DP\VendaDP.cs" />
     <Compile Include="DP\ProdutoDP.cs" />
@@ -248,7 +252,11 @@
       <DependentUpon>ModelDatabase1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ManterProdutoViewModel.cs" />
+    <Compile Include="ViewModels\RelatorioVendaViewModel.cs" />
+    <Compile Include="ViewModels\EstornarVendaViewModel.cs" />
     <Compile Include="ViewModels\ManterClienteViewModel.cs" />
+    <Compile Include="ViewModels\RealizarVendaViewModel.cs" />
     <Compile Include="ViewModels\RealizarCompraViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +289,7 @@
     <Content Include="Models\ModelDatabase1.edmx.diagram">
       <DependentUpon>ModelDatabase1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Trabalho1Bim - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -303,13 +312,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\RealizarCompra\Index.cshtml" />
     <Content Include="Views\ManterCliente\Index.cshtml" />
     <Content Include="Views\ManterCliente\Create.cshtml" />
     <Content Include="Views\ManterCliente\Edit.cshtml" />
+    <Content Include="Views\EstornarVenda\Index.cshtml" />
+    <Content Include="Views\RealizarVenda\Index.cshtml" />
+    <Content Include="Views\RealizarCompra\Index.cshtml" />
+    <Content Include="Views\RelatorioVenda\Index.cshtml" />
+    <Content Include="Views\ManterProduto\Create.cshtml" />
+    <Content Include="Views\ManterProduto\Edit.cshtml" />
+    <Content Include="Views\ManterProduto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
